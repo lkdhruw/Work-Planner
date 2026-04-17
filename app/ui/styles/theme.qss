@@ -1,0 +1,449 @@
+/* ════════════════════════════════════════════════════════════════
+   Work Planner — Dark Glassmorphism Theme
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Global ───────────────────────────────────────────────────── */
+* {
+    font-family: "Segoe UI", "SF Pro Display", "Inter", "Ubuntu", sans-serif;
+    color: #F1F5F9;
+    selection-background-color: #7C3AED;
+    selection-color: #FFFFFF;
+}
+
+QMainWindow {
+    background: transparent;
+}
+
+/* ── Main container (glass card) ──────────────────────────────── */
+#main_container {
+    background: qlineargradient(x1:0, y1:0, x2:0.3, y2:1,
+        stop:0 rgba(12, 16, 34, 232),
+        stop:1 rgba(18, 24, 52, 225));
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 22);
+}
+
+/* ── Title bar ────────────────────────────────────────────────── */
+#title_bar {
+    background: rgba(255, 255, 255, 7);
+    border-radius: 14px 14px 0 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 12);
+    min-height: 46px;
+    max-height: 46px;
+}
+
+#app_icon_label {
+    font-size: 18px;
+    padding-left: 4px;
+}
+
+#app_title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #F1F5F9;
+}
+
+/* Window dot buttons (macOS style) */
+#btn_close {
+    background: #EF4444;
+    border: none;
+    border-radius: 7px;
+    min-width: 14px; max-width: 14px;
+    min-height: 14px; max-height: 14px;
+    padding: 0;
+    font-size: 0px;
+}
+#btn_close:hover { background: #F87171; }
+
+#btn_minimize {
+    background: #F59E0B;
+    border: none;
+    border-radius: 7px;
+    min-width: 14px; max-width: 14px;
+    min-height: 14px; max-height: 14px;
+    padding: 0;
+    font-size: 0px;
+}
+#btn_minimize:hover { background: #FCD34D; }
+
+#btn_settings_icon {
+    background: transparent;
+    border: none;
+    color: #64748B;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+#btn_settings_icon:hover {
+    background: rgba(255, 255, 255, 10);
+    color: #94A3B8;
+}
+
+/* ── Scrollbars ───────────────────────────────────────────────── */
+QScrollArea { border: none; background: transparent; }
+QScrollArea > QWidget > QWidget { background: transparent; }
+
+QScrollBar:vertical {
+    background: transparent;
+    width: 5px;
+    margin: 0;
+}
+QScrollBar::handle:vertical {
+    background: rgba(255, 255, 255, 28);
+    border-radius: 2px;
+    min-height: 24px;
+}
+QScrollBar::handle:vertical:hover { background: rgba(255, 255, 255, 50); }
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0; }
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: transparent; }
+QScrollBar:horizontal { height: 0; }
+
+/* ── Profile tabs bar ─────────────────────────────────────────── */
+#profile_bar {
+    background: rgba(255, 255, 255, 4);
+    border-bottom: 1px solid rgba(255, 255, 255, 10);
+    min-height: 44px;
+    max-height: 44px;
+}
+
+/* ── General QPushButton defaults ────────────────────────────── */
+QPushButton {
+    background: rgba(255, 255, 255, 8);
+    border: 1px solid rgba(255, 255, 255, 14);
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: #F1F5F9;
+    font-size: 13px;
+    font-weight: 500;
+}
+QPushButton:hover {
+    background: rgba(255, 255, 255, 14);
+    border-color: rgba(255, 255, 255, 22);
+}
+QPushButton:pressed { background: rgba(255, 255, 255, 5); }
+
+/* Primary action */
+#btn_primary {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #7C3AED, stop:1 #6D28D9);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 13px;
+}
+#btn_primary:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #8B5CF6, stop:1 #7C3AED);
+}
+#btn_primary:pressed { background: #6D28D9; }
+
+/* Danger action */
+#btn_danger {
+    background: rgba(239, 68, 68, 18);
+    border: 1px solid rgba(239, 68, 68, 35);
+    color: #FCA5A5;
+}
+#btn_danger:hover {
+    background: rgba(239, 68, 68, 38);
+    border-color: rgba(239, 68, 68, 70);
+    color: #EF4444;
+}
+
+/* Ghost / icon-only */
+#btn_ghost {
+    background: transparent;
+    border: none;
+    color: #64748B;
+    padding: 6px 10px;
+    font-size: 16px;
+    border-radius: 6px;
+}
+#btn_ghost:hover {
+    background: rgba(255, 255, 255, 8);
+    color: #94A3B8;
+}
+
+/* Back button */
+#btn_back {
+    background: rgba(255, 255, 255, 8);
+    border: 1px solid rgba(255, 255, 255, 12);
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: #A78BFA;
+    font-size: 13px;
+    font-weight: 600;
+}
+#btn_back:hover {
+    background: rgba(124, 58, 237, 25);
+    border-color: rgba(124, 58, 237, 50);
+}
+
+/* FAB (+ add task) */
+#btn_fab {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #7C3AED, stop:1 #06B6D4);
+    border: none;
+    border-radius: 26px;
+    min-width: 52px; max-width: 52px;
+    min-height: 52px; max-height: 52px;
+    color: #FFFFFF;
+    font-size: 26px;
+    font-weight: 300;
+    padding: 0;
+}
+#btn_fab:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #8B5CF6, stop:1 #22D3EE);
+}
+#btn_fab:pressed {
+    background: #6D28D9;
+}
+
+/* Add profile / small inline */
+#btn_add_profile {
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 20);
+    border-radius: 7px;
+    padding: 4px 8px;
+    color: #64748B;
+    font-size: 18px;
+}
+#btn_add_profile:hover {
+    border-color: rgba(124, 58, 237, 60);
+    color: #A78BFA;
+    background: rgba(124, 58, 237, 12);
+}
+
+/* ── Labels ───────────────────────────────────────────────────── */
+QLabel { color: #F1F5F9; background: transparent; }
+#label_muted     { color: #64748B; font-size: 12px; }
+#label_section   { color: #94A3B8; font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+#label_task_title{ font-size: 16px; font-weight: 700; }
+#label_detail_title { font-size: 17px; font-weight: 700; }
+#label_hint      { color: #475569; font-size: 11px; }
+
+/* ── Inputs ───────────────────────────────────────────────────── */
+QLineEdit, QTextEdit, QSpinBox, QDoubleSpinBox {
+    background: rgba(255, 255, 255, 8);
+    border: 1px solid rgba(255, 255, 255, 14);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #F1F5F9;
+    font-size: 13px;
+    selection-background-color: #7C3AED;
+}
+QLineEdit:focus, QTextEdit:focus, QSpinBox:focus {
+    border-color: rgba(124, 58, 237, 180);
+    background: rgba(124, 58, 237, 12);
+}
+QLineEdit::placeholder, QTextEdit::placeholder {
+    color: #475569;
+}
+
+QComboBox {
+    background: rgba(255, 255, 255, 8);
+    border: 1px solid rgba(255, 255, 255, 14);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #F1F5F9;
+    font-size: 13px;
+}
+QComboBox:focus { border-color: rgba(124, 58, 237, 180); }
+QComboBox::drop-down { border: none; width: 28px; }
+QComboBox::down-arrow {
+    width: 0; height: 0;
+}
+QComboBox QAbstractItemView {
+    background: rgb(20, 28, 54);
+    border: 1px solid rgba(255, 255, 255, 15);
+    border-radius: 8px;
+    selection-background-color: rgba(124, 58, 237, 80);
+    color: #F1F5F9;
+    padding: 4px;
+    outline: none;
+}
+
+QDateEdit, QTimeEdit, QDateTimeEdit {
+    background: rgba(255, 255, 255, 8);
+    border: 1px solid rgba(255, 255, 255, 14);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #F1F5F9;
+    font-size: 13px;
+}
+QDateEdit:focus, QTimeEdit:focus, QDateTimeEdit:focus {
+    border-color: rgba(124, 58, 237, 180);
+}
+QDateEdit::drop-down, QTimeEdit::drop-down, QDateTimeEdit::drop-down {
+    border: none; width: 24px;
+}
+QCalendarWidget {
+    background: rgb(18, 24, 48);
+    color: #F1F5F9;
+    border: 1px solid rgba(255, 255, 255, 15);
+    border-radius: 8px;
+}
+QCalendarWidget QToolButton {
+    background: transparent;
+    color: #F1F5F9;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+QCalendarWidget QToolButton:hover { background: rgba(124, 58, 237, 40); }
+QCalendarWidget QAbstractItemView:enabled {
+    color: #F1F5F9;
+    background: rgb(18, 24, 48);
+    selection-background-color: #7C3AED;
+}
+
+QSpinBox::up-button, QSpinBox::down-button {
+    background: rgba(255, 255, 255, 10);
+    border: none;
+    border-radius: 4px;
+    width: 16px;
+}
+QSpinBox::up-button:hover, QSpinBox::down-button:hover {
+    background: rgba(124, 58, 237, 40);
+}
+
+/* ── Checkboxes (native Qt) ───────────────────────────────────── */
+QCheckBox { color: #94A3B8; spacing: 8px; background: transparent; }
+QCheckBox::indicator {
+    width: 16px; height: 16px;
+    border-radius: 4px;
+    border: 2px solid rgba(255, 255, 255, 30);
+    background: transparent;
+}
+QCheckBox::indicator:checked {
+    background: #7C3AED;
+    border-color: #7C3AED;
+}
+QCheckBox::indicator:checked:hover { background: #8B5CF6; }
+
+/* ── Slider ───────────────────────────────────────────────────── */
+QSlider::groove:horizontal {
+    height: 4px;
+    background: rgba(255, 255, 255, 18);
+    border-radius: 2px;
+}
+QSlider::handle:horizontal {
+    background: #A78BFA;
+    border: 2px solid #7C3AED;
+    width: 18px; height: 18px;
+    margin: -7px 0;
+    border-radius: 9px;
+}
+QSlider::handle:horizontal:hover { background: #C4B5FD; }
+QSlider::sub-page:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #7C3AED, stop:1 #06B6D4);
+    border-radius: 2px;
+}
+
+/* ── FontComboBox ─────────────────────────────────────────────── */
+QFontComboBox {
+    background: rgba(255, 255, 255, 8);
+    border: 1px solid rgba(255, 255, 255, 14);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #F1F5F9;
+    font-size: 13px;
+}
+QFontComboBox::drop-down { border: none; width: 24px; }
+QFontComboBox QAbstractItemView {
+    background: rgb(20, 28, 54);
+    border: 1px solid rgba(255, 255, 255, 15);
+    selection-background-color: rgba(124, 58, 237, 80);
+    color: #F1F5F9;
+}
+
+/* ── Dialog ───────────────────────────────────────────────────── */
+QDialog {
+    background: rgb(13, 17, 38);
+    border: 1px solid rgba(255, 255, 255, 15);
+    border-radius: 12px;
+}
+
+/* ── Tooltip ──────────────────────────────────────────────────── */
+QToolTip {
+    background: rgb(24, 32, 60);
+    color: #F1F5F9;
+    border: 1px solid rgba(255, 255, 255, 15);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+/* ── Detail view ──────────────────────────────────────────────── */
+#detail_header {
+    background: rgba(255, 255, 255, 5);
+    border-bottom: 1px solid rgba(255, 255, 255, 10);
+    min-height: 52px;
+    max-height: 52px;
+}
+
+#detail_scroll_content {
+    background: transparent;
+}
+
+/* ── Info chips / badges ──────────────────────────────────────── */
+#chip_profile {
+    border-radius: 10px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+}
+#chip_due {
+    background: rgba(245, 158, 11, 18);
+    border: 1px solid rgba(245, 158, 11, 35);
+    border-radius: 10px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: #FCD34D;
+}
+#chip_reminder {
+    background: rgba(6, 182, 212, 15);
+    border: 1px solid rgba(6, 182, 212, 30);
+    border-radius: 10px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: #67E8F9;
+}
+#chip_overdue {
+    background: rgba(239, 68, 68, 18);
+    border: 1px solid rgba(239, 68, 68, 40);
+    border-radius: 10px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: #FCA5A5;
+}
+
+/* ── Subtask add row ──────────────────────────────────────────── */
+#subtask_add_line {
+    background: rgba(255, 255, 255, 5);
+    border: 1px dashed rgba(255, 255, 255, 14);
+    border-radius: 8px;
+    padding: 6px 10px;
+    color: #475569;
+    font-size: 12px;
+}
+#subtask_add_line:focus {
+    border-color: rgba(124, 58, 237, 120);
+    background: rgba(124, 58, 237, 10);
+    color: #F1F5F9;
+}
+
+/* ── Settings window ──────────────────────────────────────────── */
+#settings_content {
+    background: transparent;
+}
+#settings_group {
+    background: rgba(255, 255, 255, 5);
+    border: 1px solid rgba(255, 255, 255, 10);
+    border-radius: 10px;
+    padding: 12px;
+}
