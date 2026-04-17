@@ -21,7 +21,7 @@ A modern, semi-transparent Python desktop sidebar widget for task and project ma
 ## Requirements
 
 - Python 3.10+
-- Windows 11 (x86-64) or macOS (Apple Silicon M3 supported natively)
+- Windows, macOS, or Linux
 
 ## Installation
 
